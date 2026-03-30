@@ -91,6 +91,9 @@ class ECG:
         '''
         intervals = []
 
+        if fs <= 0:
+            raise ValueError("Sampling frequency must be greater than zero")
+
         for i in range(1, len(peaks)):
             interval = (peaks[i] - peaks[i-1]) / fs
             intervals.append(interval)
